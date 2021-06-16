@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Disaster news
+{% endblock %}
+
+{% block body %}
+
+	<div style="text-align: center;">
+        <form action="" method = "GET">
+            <label for="selected_disaster_type">Choose a disaster type:</label>
+            <select name="selected_disaster_type">
+                {% for label in label_set %}
+                <option value={{label}}>{{label}}</option>
+                {% endfor %}
+            </select> 
+			<input type="submit" value="Show">
+        </form>
+    </div>
+
+
+    <table border="4">
+        <tr>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Time</th>
+            <th>Label</th>
+        </tr>
+        {% for news in news_all %}
+            <tr>
+                <td>
+                    {{ news.title_text }}
+                </td>
+                <td>
+                    {{ news.url }}
+                </td>
+                <td>
+                    {{ news.time }}
+                </td>
+                <td>
+                    {{ news.label }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
